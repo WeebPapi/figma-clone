@@ -1,26 +1,121 @@
 @import "tailwindcss";
+@import "tailwindcss/preflight";
+@tailwind utilities;
+@import "@liveblocks/react-comments/styles.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Primary colors */
+  --color-primary-black: #14181f;
+  --color-primary-green: #56ffa6;
+  --color-primary-grey-100: #2b303b;
+  --color-primary-grey-200: #202731;
+  --color-primary-grey-300: #c4d3ed;
+
+  /* Container settings */
+  --container-padding: 2rem;
+  --container-max-width-2xl: 1400px;
+
+  /* Animation keyframes */
+  --keyframe-accordion-down-from: {
+    height: 0;
+  }
+  --keyframe-accordion-down-to: {
+    height: var(--radix-accordion-content-height);
+  }
+  --keyframe-accordion-up-from: {
+    height: var(--radix-accordion-content-height);
+  }
+  --keyframe-accordion-up-to: {
+    height: 0;
+  }
+
+  /* Animation settings */
+  --animation-accordion-down: accordion-down 0.2s ease-out;
+  --animation-accordion-up: accordion-up 0.2s ease-out;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  font-family: work sans, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Keyframes definitions */
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@layer utilities {
+  .no-ring {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .input-ring {
+    height: 2rem !important;
+    border-radius: 0 !important;
+    border: none !important;
+    background-color: transparent !important;
+    outline: none !important;
+  }
+
+  .input-ring:focus {
+    box-shadow: 0 0 0 1px var(--color-primary-green) !important;
+  }
+
+  .right-menu-content {
+    display: flex !important;
+    width: 20rem !important;
+    flex-direction: column !important;
+    gap: 0.25rem !important;
+    border: none !important;
+    background-color: var(--color-primary-black) !important;
+    padding: 1rem 0 !important;
+    color: white !important;
+  }
+
+  .right-menu-item {
+    display: flex !important;
+    justify-content: space-between !important;
+    padding: 0.5rem 0.75rem !important;
+  }
+
+  .right-menu-item:hover {
+    background-color: var(--color-primary-grey-200) !important;
+  }
+
+  /* Animation utilities */
+  .animate-accordion-down {
+    animation: accordion-down 0.2s ease-out;
+  }
+
+  .animate-accordion-up {
+    animation: accordion-up 0.2s ease-out;
+  }
+}
+
+/* Container styles */
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: var(--container-max-width-2xl);
+  }
 }
