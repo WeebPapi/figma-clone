@@ -17,8 +17,8 @@ const Cursor: React.FC<CursorProps> = ({ x, y, color, message }) => {
       <CursorSVG color={color} />
       {message && (
         <div
-          className=" rounded-3xl px-4 py-2 min-h-7 flex items-center"
-          style={{ backgroundColor: color }}
+          className="absolute top-5 left-2 rounded-3xl px-4 py-2 min-h-7 flex items-center"
+          style={{ backgroundColor: color, borderRadius: 20 }}
         >
           <p className="text-white text-sm leading-relaxed whitespace-nowrap">
             {message}

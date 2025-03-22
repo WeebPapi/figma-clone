@@ -104,6 +104,9 @@
   .animate-accordion-up {
     animation: accordion-up 0.2s ease-out;
   }
+  .reaction-btn {
+    font-size: 24px !important;
+  }
 }
 
 /* Container styles */
