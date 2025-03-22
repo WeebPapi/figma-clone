@@ -109,7 +109,7 @@ const Live = () => {
       } else if (e.key === "Escape") {
         updateMyPresence({ message: "" })
         setCursorState((prev) => ({ ...prev, mode: CursorMode.Hidden }))
-      } else if (e.key === "e") {
+      } else if (e.key === "e" && cursorState.mode !== CursorMode.Chat) {
         setCursorState((prev) => ({
           ...prev,
           mode: CursorMode.ReactionSelector,
@@ -129,7 +129,7 @@ const Live = () => {
       window.removeEventListener("keyup", onKeyUp)
       window.removeEventListener("keydown", onKeyDown)
     }
-  }, [updateMyPresence])
+  }, [updateMyPresence, cursorState.mode])
 
   const setReactions = useCallback((reaction: string) => {
     setCursorState({ mode: CursorMode.Reaction, isPressed: false, reaction })
@@ -139,7 +139,6 @@ const Live = () => {
     <div
       className="w-full h-[100vh] flex justify-center items-center text-center"
       onPointerMove={handlePointerMove}
-      onPointerLeave={handlePointerLeave}
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
     >

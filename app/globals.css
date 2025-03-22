@@ -107,6 +107,9 @@
   .reaction-btn {
     font-size: 24px !important;
   }
+  .chat-bubble {
+    padding: 0.5rem 1rem !important;
+  }
 }
 
 /* Container styles */

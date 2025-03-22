@@ -20,7 +20,7 @@ const CursorChat: React.FC<CursorChatProps> = ({
     if (e.key === "Enter") {
       setCursorState({
         mode: CursorMode.Chat,
-        previousMessage: cursorState.message,
+        previousMessage: cursorState.message as string,
         message: "",
       })
     } else if (e.key === "Escape") {
@@ -39,12 +39,17 @@ const CursorChat: React.FC<CursorChatProps> = ({
       {cursorState.mode === CursorMode.Chat && (
         <>
           <CursorSVG color="#000" />
-          <div className="absolute w-60 top-5 left-2 bg-blue-500 px-6 py-2 text-sm leading-relaxed text-white rounded-[20px] flex justify-center items-center">
+          <div
+            className="absolute left-2 top-5 bg-blue-500 chat-bubble text-sm leading-relaxed text-white"
+            style={{ borderRadius: 20 }}
+          >
             {cursorState.previousMessage && (
-              <div>{cursorState.previousMessage}</div>
+              <div className="w-full text-left">
+                {cursorState.previousMessage}
+              </div>
             )}
             <input
-              className="z-10 w-55 border-none bg-transparent text-white placeholder-blue-300 outline-none"
+              className="z-10 w-60 border-none	bg-transparent text-white placeholder-blue-300 outline-none"
               autoFocus
               onChange={handleChange}
               onKeyDown={handleKeyDown}
