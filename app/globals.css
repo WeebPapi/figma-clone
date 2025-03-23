@@ -1,7 +1,20 @@
 @import "tailwindcss";
 @import "tailwindcss/preflight";
 @tailwind utilities;
-@import "@liveblocks/react-comments/styles.css";
+
+* {
+  padding: initial;
+  margin: initial;
+  box-sizing: border-box;
+}
+
+/* Then re-apply Tailwind's base styles */
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: work sans, sans-serif;
+}
 
 @theme {
   /* Primary colors */

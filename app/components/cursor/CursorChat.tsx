@@ -42,6 +42,9 @@ const CursorChat: React.FC<CursorChatProps> = ({
           <div
             className="absolute left-2 top-5 bg-blue-500 chat-bubble text-sm leading-relaxed text-white"
             style={{ borderRadius: 20 }}
+            onKeyUp={(e) => {
+              e.stopPropagation()
+            }}
           >
             {cursorState.previousMessage && (
               <div className="w-full text-left">
