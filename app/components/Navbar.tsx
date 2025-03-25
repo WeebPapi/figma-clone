@@ -23,10 +23,10 @@ const Navbar = ({
       value.some((val) => val?.value === activeElement?.value))
 
   return (
-    <nav className="flex select-none items-center justify-between gap-4 bg-primary-black px-5 text-white">
+    <nav className="flex select-none h-[82px] items-center justify-between gap-4 bg-primary-black px-5 text-white">
       <Image src="/assets/logo.svg" alt="FigPro Logo" width={58} height={20} />
 
-      <ul className="flex flex-row">
+      <ul className="flex flex-row w-[20%] h-full justify-between">
         {navElements.map((item: ActiveElement | any) => (
           <li
             key={item.name}
@@ -34,7 +34,7 @@ const Navbar = ({
               if (Array.isArray(item.value)) return
               handleActiveElement(item)
             }}
-            className={`group px-2.5 py-5 flex justify-center items-center
+            className={`group px-2.5 py-5 flex justify-center items-center w-[82px]  h-full
             ${
               isActive(item.value)
                 ? "bg-primary-green"
@@ -54,7 +54,7 @@ const Navbar = ({
             ) : item?.value === "comments" ? (
               // If value is comments, trigger the NewThread component
               <NewThread>
-                <Button className="relative w-5 h-5 object-contain">
+                <Button className="relative w-7 h-7 object-contain">
                   <Image
                     src={item.icon}
                     alt={item.name}
@@ -64,7 +64,7 @@ const Navbar = ({
                 </Button>
               </NewThread>
             ) : (
-              <Button className="relative w-5 h-5 object-contain">
+              <Button className="relative w-7 h-7 object-contain">
                 <Image
                   src={item.icon}
                   alt={item.name}
