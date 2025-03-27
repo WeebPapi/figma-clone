@@ -19,8 +19,15 @@ const Dimensions = ({
   isEditingRef,
   handleInputChange,
 }: Props) => (
-  <section className="flex flex-col border-b border-primary-grey-200">
-    <div className="flex flex-col gap-4 px-6 py-3">
+  <section className="flex flex-col border-b border-primary-grey-200 w-full">
+    <div
+      className="flex flex-col gap-4"
+      style={{
+        paddingBlock: "0.75rem",
+        paddingInline: "1.5rem",
+        borderBottom: "1px solid var(--color-primary-grey-200)",
+      }}
+    >
       {dimensionsOptions.map((item) => (
         <div
           key={item.label}
@@ -37,7 +44,7 @@ const Dimensions = ({
             className="input-ring"
             min={10}
             onChange={(e) => handleInputChange(item.property, e.target.value)}
-            onBlur={(e) => {
+            onBlur={() => {
               isEditingRef.current = false
             }}
           />
