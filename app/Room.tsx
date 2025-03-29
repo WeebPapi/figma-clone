@@ -12,7 +12,13 @@ import Loader from "./components/Loader"
 const API_KEY = process.env.NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY as string
 export function Room({ children }: { children: ReactNode }) {
   return (
-    <LiveblocksProvider publicApiKey={API_KEY}>
+    <LiveblocksProvider
+      publicApiKey={API_KEY}
+      resolveUsers={async ({ userIds }) => {
+        console.log(userIds)
+        return []
+      }}
+    >
       <RoomProvider
         id="my-room"
         initialPresence={{ cursor: null, cursorColor: null, editingText: null }}
